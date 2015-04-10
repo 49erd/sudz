@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title><%= user.username %>'s Profile</title>
+</head>
+<body>
+	<h1>Welcome, <%= user.username %>!</h1>
+	<h3>Tell us a little more about yourself:</h3>
+	<form method="POST" action="/profile">
+		<input type="text" name="firstName" placeholder="First Name">
+		<input type="text" name="lastName" placeholder="Last Name">
+		<input type="text" name="city" placeholder="City">
+		<input type="text" name="state" placeholder="State">
+		<input type="text" name="age" placeholder="age">
+		<button type="submit">Update</button>
+	</form>
+</body>
+</html>
