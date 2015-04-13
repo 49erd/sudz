@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<title>Brewery Search</title>
+</head>
+<body>
+	<form method="GET" action="/search">
+		<input type="text" name="name" placeholder="Search by Brewery Name">
+		<input type="text" name="locality" placeholder="Search Breweries by City"
+		<input type="text" name="region" placeholder="Search Breweries by State">
+		<button type="submit">Search</button>
+	</form>
+	<% if (resp.statusCode === 200) { %>
+	<h1>Search Results:</h1>
+	<% breweries.forEach(function(brewery) { %>
+		<h2><a href="http://www.brewerydb.com/brewery/<%= brewery.id %>"><%= brewery.name %></a></h2>
+		<h3>City: <%= brewery.locality %></h3>
+		<h3>State: <%= brewery.region %></h3>
+	<% }); %>
+<% } %>
+</html>

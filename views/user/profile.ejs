@@ -2,18 +2,24 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<title><%= user.username %>'s Profile</title>
 </head>
 <body>
 	<h1>Welcome, <%= user.username %>!</h1>
-	<h3>Tell us a little more about yourself:</h3>
-	<form method="POST" action="/profile">
-		<input type="text" name="firstName" placeholder="First Name">
-		<input type="text" name="lastName" placeholder="Last Name">
-		<input type="text" name="city" placeholder="City">
-		<input type="text" name="state" placeholder="State">
-		<input type="text" name="age" placeholder="age">
+
+	<ul>
+		<li><a href="/profile/favorites">View my favorite breweries</a></li>
+		<li><a href="/profile/bucketlist">View my list of breweries to visit</a></li>
+	</ul>
+<!-- 	<h3>Tell us a little more about yourself:</h3>
+	<form method="PUTx" action="/profile">
+		<input type="text" name="firstName" placeholder="First Name"></br>
+		<input type="text" name="lastName" placeholder="Last Name"></br>
+		<input type="text" name="city" placeholder="City"></br>
+		<input type="text" name="state" placeholder="State"></br>
+		<input type="text" name="age" placeholder="age"></br>
 		<button type="submit">Update</button>
-	</form>
+	</form> -->
 </body>
 </html>
