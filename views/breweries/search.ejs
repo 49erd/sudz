@@ -6,10 +6,44 @@
 	<title>Brewery Search</title>
 </head>
 <body>
-	<h1>Search for Breweries:</h1>
+	<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+  		<div class="container">
+    		<div class="navbar-header">
+      			<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        			<span class="sr-only">Toggle navigation</span>
+        			<span class="icon-bar"></span>
+        			<span class="icon-bar"></span>
+        			<span class="icon-bar"></span>
+      			</button>
+      			<a href="/" class="navbar-brand">Sudz</a>
+    		</div>
+    		<nav class="collapse navbar-collapse bs-navbar-collapse">
+      			<ul class="nav navbar-nav">
+        			<li>
+          				<a href="/contact/">Contact</a>
+        			</li>
+        			<li>
+          				<a href="/about">About</a>
+        			</li>
+        			<li>
+        				<a href="/search">Brewery Search</a>
+        			</li>
+      			</ul>
+      			<ul class="nav navbar-nav navbar-right">
+        			<li><a href="/profile" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">My Profile</a></li>
+        			<li><a href="/favorites" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">My Favorites</a></li>
+      			</ul>
+    		</nav>
+  		</div>
+	</header>
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-6">
+			<div class="col-xs-12">
+				<h1>Brewery Search<small> Search for Brewery by Name</small></h1>
+			</div>
+		</div>
+		<divclass ="row">
+			<div class="col-xs-9">
 				<form method="GET" action="/search">
  					<input type="text" name="name" placeholder="Find by name">
  					<button type="submit">Search</button>
@@ -23,14 +57,12 @@
 				</ul>
 			</div>
 		</div>
-	</div>
-	<div class="container">
 		<div class="row">
-			<div class="col-xs-6">
+			<div class="col-xs-6 col-xs-offset-1">
 				<table class="table-list">
 					<tbody><% breweries.forEach(function(brewery) { %>
 						<tr>
-							<td width="72" align="center" padding="20"><% if (brewery.images) { %><img width="64" height="64" src="<%= brewery.images.icon %>"><% } %>
+							<td width="72" align="center" padding="20"><% if (brewery.images) { %><img width="64" height="64" src="<%= brewery.images.icon %>" class="img-thumbnail"><% } %>
 							</td>
 							<td position="center">
 								<h4><a href="/breweries/<%= brewery.id %> "><%= brewery.name %></h4></br>

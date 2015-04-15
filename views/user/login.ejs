@@ -6,14 +6,41 @@
 	<title>Login</title>
 </head>
 <body>
+	<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+  		<div class="container">
+    		<div class="navbar-header">
+      			<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        			<span class="sr-only">Toggle navigation</span>
+        			<span class="icon-bar"></span>
+        			<span class="icon-bar"></span>
+        			<span class="icon-bar"></span>
+      			</button>
+      			<a href="/" class="navbar-brand">Sudz</a>
+    		</div>
+    		<nav class="collapse navbar-collapse bs-navbar-collapse">
+      			<ul class="nav navbar-nav">
+        			<li>
+          				<a href="/contact/">Contact</a>
+        			</li>
+        			<li>
+          				<a href="/about">About</a>
+        			</li>
+        			<li>
+        				<a href="/search">Brewery Search</a>
+        			</li>
+      			</ul>
+      			<ul class="nav navbar-nav navbar-right">
+        			<li><a href="/signup" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Sign Up</a></li>
+      			</ul>
+    		</nav>
+  		</div>
+	</header>
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
 				<h1>Login to Your Account</h1>
 			</div>
 		</div>
-	</div>
-	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
 				<form method="POST" action="/login">

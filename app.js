@@ -8,6 +8,8 @@ var express = require('express'),
 	session = require('express-session'),
 	request = require('request');
 
+var apiKey = process.env.API_KEY;
+
 var db = require('./models');
 
 var app = express();
@@ -62,6 +64,14 @@ app.post('/', function(req,res) {
 		req.login(user);
 		res.redirect('/profile');
 	});
+});
+
+app.get('/about', function(req,res) {
+	res.render('index/about');
+});
+
+app.get('/contact', function(req,res) {
+	res.render('index/contact');
 });
 
 app.get('/signup', function(req,res) {
@@ -141,7 +151,7 @@ app.put('/profile', function(req,res) {
 
 app.get('/breweries/:id', function(req,res) {
 	var brewId = req.params.id;
-	var endpointDesc = "http://api.brewerydb.com/v2/brewery/"+brewId+"/?key=024d36e33d31c96089654338402722b4";
+	var endpointDesc = "http://api.brewerydb.com/v2/brewery/"+brewId+"/?key="+apiKey;
 	request(endpointDesc, function(err, resp, body) {
 		if (!err && resp.statusCode === 200) {
 			var apiDesc = JSON.parse(body).data;
