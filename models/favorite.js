@@ -1,15 +1,16 @@
 "use strict";
 module.exports = function(sequelize, DataTypes) {
-  var breweries_wishlist = sequelize.define("breweries_wishlist", {
+  var Favorite = sequelize.define("Favorite", {
     name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    website: DataTypes.STRING
+    breweryId: DataTypes.STRING,
+    UserId: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        this.belongsTo(models.User);
       }
     }
   });
-  return breweries_wishlist;
+  return Favorite;
 };

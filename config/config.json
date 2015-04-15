@@ -1,16 +1,16 @@
 {
   "development": {
-    "database": "beer-me-app",
+    "database": "sudz_app",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "database": "beer-me-app",
+    "database": "sudz_app",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
-    "database": "beer-me-app",
+    "database": "sudz_app",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }

@@ -14,7 +14,7 @@ module.exports = function (sequelize, DataTypes){
       }
     },
     email: { 
-      type:DataTypes.STRING, 
+      type:DataTypes.STRING,
       unique: true, 
       validate: {
         len: [6, 30]
@@ -36,6 +36,9 @@ module.exports = function (sequelize, DataTypes){
     },
 
     classMethods: {
+      associate: function(models) {
+        this.hasMany(models.Favorite);
+      },
       encryptPassword: function(password) {
         console.log(password);
         console.log(salt);

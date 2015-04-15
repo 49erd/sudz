@@ -6,6 +6,14 @@
 	<title>Favorite Breweries</title>
 </head>
 <body>
+	<h1>My Favorite Breweries:</h1>
+	<% user.favorites.forEach(function(brewery) { %>
+	<ul>
+		<li><a href="/breweries/<%= brewery.id %>"<%= brewery.name %></a></li>
+		<li>City: <%= brewery.city %></li>
+		<li>State: <%= brewery.state %></li>
+	</ul>
+	<% }) %>
 	
 </body>
 </html>

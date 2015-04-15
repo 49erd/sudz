@@ -6,18 +6,23 @@
 	<title>Brewery Search</title>
 </head>
 <body>
-	<form method="GET" action="/search">
-		<input type="text" name="name" placeholder="Search by Brewery Name">
-		<input type="text" name="locality" placeholder="Search Breweries by City"
-		<input type="text" name="region" placeholder="Search Breweries by State">
-		<button type="submit">Search</button>
-	</form>
-	<% if (resp.statusCode === 200) { %>
-	<h1>Search Results:</h1>
-	<% breweries.forEach(function(brewery) { %>
-		<h2><a href="http://www.brewerydb.com/brewery/<%= brewery.id %>"><%= brewery.name %></a></h2>
-		<h3>City: <%= brewery.locality %></h3>
-		<h3>State: <%= brewery.region %></h3>
-	<% }); %>
-<% } %>
+	<h1>Search for Breweries:</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-9">
+				<form method="GET" action="/search">
+ 					<input type="text" name="name" placeholder="Find by name">
+ 					<button type="submit">Search</button>
+				</form>
+				<h1>Search Results:</h1>
+				<% breweries.forEach(function(brewery) { %>
+					<h3><a href="/breweries/<%= brewery.id %> "><%= brewery.name %></a></h3>
+					<p>Website: <a href="<%= brewery.website %>" target="_blank"><%= brewery.website %></a></p>
+					<% }); %>
+					<% if (noBreweries) { %>
+					<p>No results found</p>
+				<% } %>
+			</div>
+		</div>
+	</div>
 </html>

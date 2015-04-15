@@ -3,9 +3,37 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	<title>Search Results</title>
+	<title><%= brewery.name %></title>
 </head>
 <body>
-	
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12"><% if (brewery.images.large) { %><img src="<%= brewery.images.large %>"/><% } %></div>
+<!-- 		</div>
+		<div class="row">
+			<div class="col-xs-9"><h1><%= brewery.name %></h1></div> -->
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-3">
+				Established: <%= brewery.established %></br>
+				<a href="<%= brewery.website %>" target="_blank"><%= brewery.website %></a></div>
+			<div class="col-xs-6"><%= brewery.description %></div>
+			<div class="col-xs-3">
+				<form method="POST" action="/favorites">
+					<button type="submit">Add to Favorites</button>
+				</form>
+<!-- 				<form method="POST" action="/bucketlist">
+					<button type="submit">Add to List of Breweries to Visit</button>
+				</form> -->
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-6"><a href="/search">Back to Search</a></div>
+		</div>
+	</div>
 </body>
 </html>
