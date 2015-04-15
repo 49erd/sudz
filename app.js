@@ -14,6 +14,8 @@ var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 
+app.use(express.static(__dirname + '/public'));
+
 app.use(session({
   secret: 'super secret thing',
   resave: false,
@@ -24,6 +26,7 @@ app.use("/", function (req, res, next) {
     req.login = function (user) {
         req.session.userId = user.id;
     };
+
     
   req.currentUser = function () {
     return db.User.
@@ -117,6 +120,11 @@ app.get('/profile', function(req,res) {
 	});
 });
 
+app.post('/profile', function(req,res) {
+	req.logout();
+	res.redirect('/');
+});
+
 app.put('/profile', function(req,res) {
 	var firstName = req.body.firstName;
 	var lastName = req.body.lastName;
@@ -147,31 +155,20 @@ app.post('/favorites', function(req,res) {
 	var brewery = req.body.brewery;
 	db.Favorite.findAll({where: {UserId: req.session.userId, breweryId: brewery.breweryId}}).then(function(site) {
 		console.log("result is " + site)
-		if (site.length === 0) {
+		if (site.length < 1) {
 			db.Favorite.create({UserId: req.session.userId, name: brewery.name, breweryId: brewery.breweryId}).then(function(beer) {
 				res.redirect('/favorites');
 			});
+		} else {
+			res.redirect('/favorites');
 		}
 	});
 });
-// 	var brewId = req.params.id;
-// 	var userId = req.currentUser().id;
-// 	var endpointDesc = "http://api.brewerydb.com/v2/brewery/"+brewId+"/?key=024d36e33d31c96089654338402722b4";
-// 	request(endpointDesc, function(err, resp, body) {
-// 		if (!err && resp.statusCode === 200) {
-// 			var apiDesc = JSON.parse(body).data;
-// 			db.Favorite.create({UserId: userId, breweryId: apiDesc.id, name: apiDesc.name}).then(function(redirect) {
-// 				(res.redirect('/favorites'));
-// 			});
-// 		}
-// 	});
 
 app.get('/favorites', function(req,res) {
 	if (req.session.userId) {
 		db.Favorite.findAll({where: {UserId: req.session.userId}})
 		.then(function(favorites) {
-
-			console.log("\n\n\n\n\n\nThe favorites were:", favorites);
 			res.render('user/favorites', {favorites: favorites});
 		});
 	} else {

@@ -6,14 +6,24 @@
 	<title>Favorite Breweries</title>
 </head>
 <body>
-	<h1>My Favorite Breweries:</h1>
-	<% favorites.forEach(function(brewery) { %>
-	<ul>
-		<li><a href="/breweries/<%= brewery.breweryId %>"><%= brewery.name %></a></li>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-6">
+				<h1>My Favorite Breweries:</h1>
+				<% favorites.forEach(function(brewery) { %>
+				<ul>
+					<li><a href="/breweries/<%= brewery.breweryId %>"><%= brewery.name %></a></li>
 <!-- 		<li>City: <%= brewery.city %></li>
 		<li>State: <%= brewery.state %></li> -->
-	</ul>
-	<% }) %>
-	
+				</ul>
+				<% }) %>
+			</div>
+			<div class="col-xs-3">
+				<a href="/profile">Profile</a></br>
+				<a href="/search">Brewery Search</a>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>

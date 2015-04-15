@@ -9,10 +9,15 @@
 	<h1>Welcome, <%= user.username %>!</h1>
 
 	<ul>
-		<li><h4><a href="/favorites">View my favorite breweries</a></h4></li>
+		<li><h4><a href="/search">Search for Breweries</a></h4></li>
 <!-- 		<li><h4><a href="/profile/bucketlist">View my list of breweries to visit</a></h4></li>
- -->		<li><h4><a href="/search">Search for Breweries</a></h4></li>
+ -->		<li><h4><a href="/favorites">View my favorite breweries</a></h4></li>
 	</ul>
+	<p>
+		<form method="POST" action="/profile">
+			<button type="submit">Logout</button>
+		</form>
+	</p>
 <!-- 	<h3>Tell us a little more about yourself:</h3>
 	<form method="PUTx" action="/profile">
 		<input type="text" name="firstName" placeholder="First Name"></br>

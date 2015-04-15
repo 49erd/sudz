@@ -45,7 +45,7 @@ module.exports = function (sequelize, DataTypes){
         var hash = bcrypt.hashSync(password, salt);
         return hash;
       },
-      createSecure: function(username, email, password) {
+        createSecure: function(username, email, password) {
         return this.create({
           username: username,
           email: email,
