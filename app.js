@@ -43,6 +43,8 @@ app.use("/", function (req, res, next) {
     req.user = null;
   }
 
+  req.session.userId=1;
+
   next();
 });
 
@@ -135,65 +137,48 @@ app.get('/breweries/:id', function(req,res) {
 	request(endpointDesc, function(err, resp, body) {
 		if (!err && resp.statusCode === 200) {
 			var apiDesc = JSON.parse(body).data;
-			res.render('breweries/breweries', {brewery: apiDesc})
+			console.log(apiDesc);
+			res.render('breweries/breweries', {brewery: apiDesc, brewId: brewId})
 		}
 	});
 });
 
-app.post('/breweries/:id', function(req,res) {
-	var brewId = req.params.id;
-	var userId = req.currentUser().id;
-	var endpointDesc = "http://api.brewerydb.com/v2/brewery/"+brewId+"/?key=024d36e33d31c96089654338402722b4";
-	request(endpointDesc, function(err, resp, body) {
-		if (!err && resp.statusCode === 200) {
-			var apiDesc = JSON.parse(body).data;
-			db.Favorite.create({UserId: userId, breweryId: apiDesc.id, name: apiDesc.name}).then(function(redirect) {
-				(res.redirect('/favorites'));
+app.post('/favorites', function(req,res) {
+	var brewery = req.body.brewery;
+	db.Favorite.findAll({where: {UserId: req.session.userId, breweryId: brewery.breweryId}}).then(function(site) {
+		console.log("result is " + site)
+		if (site.length === 0) {
+			db.Favorite.create({UserId: req.session.userId, name: brewery.name, breweryId: brewery.breweryId}).then(function(beer) {
+				res.redirect('/favorites');
 			});
 		}
 	});
 });
 // 	var brewId = req.params.id;
+// 	var userId = req.currentUser().id;
 // 	var endpointDesc = "http://api.brewerydb.com/v2/brewery/"+brewId+"/?key=024d36e33d31c96089654338402722b4";
 // 	request(endpointDesc, function(err, resp, body) {
 // 		if (!err && resp.statusCode === 200) {
 // 			var apiDesc = JSON.parse(body).data;
-// 			db.Favorite.create({user_id: currentUser.id, name: apiDesc.name}).then(function(redirecting) {
-// 				res.redirect('/favorites');
+// 			db.Favorite.create({UserId: userId, breweryId: apiDesc.id, name: apiDesc.name}).then(function(redirect) {
+// 				(res.redirect('/favorites'));
 // 			});
 // 		}
 // 	});
-// });
-	// request(endpointLoc, function(err, resp, body) {
-	// 	if (!err && resp.statusCode === 200) {
-	// 		console.log(JSON.parse(body));
-	// 		var apiLoc = JSON.parse(body).data[0];
-	// 		res.render('breweries/breweries', {breweryLoc: apiLoc})
-	// 	}
-// 	});
-// });
 
 app.get('/favorites', function(req,res) {
-	var currentUser = req.currentUser();
-	if (currentUser) {
-		db.favorite.find({where: {UserId: currentUser.id}
-	})
-		.then(function(user) {
-			res.render('user/favorites', {user: user});
-	})
+	if (req.session.userId) {
+		db.Favorite.findAll({where: {UserId: req.session.userId}})
+		.then(function(favorites) {
+
+			console.log("\n\n\n\n\n\nThe favorites were:", favorites);
+			res.render('user/favorites', {favorites: favorites});
+		});
 	} else {
 		res.redirect('/login');
 	}
 });
 
-// app.get('/profile/bucketlist', function(req,res) {
-// 	currentUser.
-// 		var user = currentUser;
-// 		res.render('user/favorites', user:user);
-// 		};
-// 	};
-// });
-
-app.listen(3000, function() {
+app.listen((process.env.PORT || 3000), function() {
 	console.log("Listening...");
 });

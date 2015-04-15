@@ -15,12 +15,21 @@
  					<button type="submit">Search</button>
 				</form>
 				<h1>Search Results:</h1>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-9">
 				<% breweries.forEach(function(brewery) { %>
-					<h3><a href="/breweries/<%= brewery.id %> "><%= brewery.name %></a></h3>
-					<p>Website: <a href="<%= brewery.website %>" target="_blank"><%= brewery.website %></a></p>
-					<% }); %>
-					<% if (noBreweries) { %>
-					<p>No results found</p>
+				<% if (brewery.images) { %>
+				<img src="<%= brewery.images.icon %>">
+				<% }; %>
+				<h3><a href="/breweries/<%= brewery.id %> "><%= brewery.name %></a></h3>
+				<p>Website: <a href="<%= brewery.website %>" target="_blank"><%= brewery.website %></a></p>
+				<% }); %>
+				<% if (noBreweries) { %>
+				<p>No results found</p>
 				<% } %>
 			</div>
 		</div>

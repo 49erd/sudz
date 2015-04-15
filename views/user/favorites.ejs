@@ -7,11 +7,11 @@
 </head>
 <body>
 	<h1>My Favorite Breweries:</h1>
-	<% user.favorites.forEach(function(brewery) { %>
+	<% favorites.forEach(function(brewery) { %>
 	<ul>
-		<li><a href="/breweries/<%= brewery.id %>"<%= brewery.name %></a></li>
-		<li>City: <%= brewery.city %></li>
-		<li>State: <%= brewery.state %></li>
+		<li><a href="/breweries/<%= brewery.breweryId %>"><%= brewery.name %></a></li>
+<!-- 		<li>City: <%= brewery.city %></li>
+		<li>State: <%= brewery.state %></li> -->
 	</ul>
 	<% }) %>
 	
