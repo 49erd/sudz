@@ -10,7 +10,7 @@
     "dialect": "postgres"
   },
   "production": {
-    "database": "sudz_app",
+    "use_env_variable": "HEROKU_POSTGRESQL_AMBER_URL",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
