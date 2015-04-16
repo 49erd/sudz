@@ -3,9 +3,38 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
 	<title>Contact</title>
 </head>
 <body>
+<div class="navbar navbar-inverse navbar-static-top" >
+	<div class="container">
+		<a href="/" class="navbar-brand">SUDZ</a>
+		<div class="collapse navbar-collapse navHeaderCollapse">
+			<ul class="nav navbar-nav">
+        			<li class="active">
+          				<a href="/contact/">Contact</a>
+        			</li>
+        			<li>
+          				<a href="/about">About</a>
+        			</li>
+        			<li>
+        				<a href="/search">Brewery Search</a>
+        			</li>
+      			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/">Home</a></li>
+				<% if (userId) { %>
+				<li><a href="/profile">Profile</a></li>
+				<li><a href="/favorites">Favorites</a></li>
+				<% } else { %>
+				<li><a href="/login">Sign In</a></li>
+				<li><a href="/signup">Sign Up</a></li>
+				<% } %>
+			</ul>
+		</div>
+	</div>
+</div>
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">

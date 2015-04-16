@@ -6,8 +6,47 @@
 	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
 	<title>Welcome to Sudz</title>
 </head>
-<body>
-	<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+<body id="home">
+<!-- <div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+  	Menu
+  	<span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="/search">Brewery Search</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="/favorites">Favorite Breweries</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="/profile">My Profile</a></li>
+  </ul>
+</div> -->
+<div class="navbar navbar-inverse navbar-static-top" >
+	<div class="container">
+		<a href="/" class="navbar-brand">SUDZ</a>
+		<div class="collapse navbar-collapse navHeaderCollapse">
+			<ul class="nav navbar-nav">
+        			<li>
+          				<a href="/contact/">Contact</a>
+        			</li>
+        			<li>
+          				<a href="/about">About</a>
+        			</li>
+        			<li>
+        				<a href="/search">Brewery Search</a>
+        			</li>
+      			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="/">Home</a></li>
+				<% if (userId) { %>
+				<li><a href="/profile">Profile</a></li>
+				<li><a href="/favorites">Favorites</a></li>
+				<% } else { %>
+				<li><a href="/login">Sign In</a></li>
+				<li><a href="/signup">Sign Up</a></li>
+				<% } %>
+			</ul>
+		</div>
+	</div>
+</div>
+	<!-- <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
   		<div class="container">
     		<div class="navbar-header">
       			<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
@@ -36,18 +75,19 @@
       			</ul>
     		</nav>
   		</div>
-	</header>
+	</header> -->
+<div class="jumbotron">
 	<div class="container">
-		<div class="row">
-			<div class="col-xs-12 col-md-12" id="red">
-				<h1>Sudz: Connecting You with Brew</h1>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-4 col-md-4">
-				<h3><a href="/search">Brewery Search</a></h3>
-			</div>
-		</div>
+		<h1>SUDZ: Connecting You with Brew</h1>
+		<p>Welcome to SUDZ, your resource for all the world's breweries.  Create an account, search for breweries, add them to your favorites.  Make sure you don't leave a single brewery unvisited.</p>
+		<h3><a href="/search">Brewery Search</a></h3>
 	</div>
+</div>
+<div class="navbar navbar-default navbar-fixed-bottom">
+	<div class="container">
+		<p class="navbar-text pull-left"><small>Site Built by</small> El Jefe</p>
+		<a href="http://www.github.com/49erd" target="_blank" class="navbar-btn btn-danger btn pull-right">Check Out My GitHub</a>
+	</div>
+</div>
 </body>
 </html>

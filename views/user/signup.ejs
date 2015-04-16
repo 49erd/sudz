@@ -3,22 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
 	<title>Sign Up</title>
 </head>
 <body>
-	<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
-  		<div class="container">
-    		<div class="navbar-header">
-      			<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-        			<span class="sr-only">Toggle navigation</span>
-        			<span class="icon-bar"></span>
-        			<span class="icon-bar"></span>
-        			<span class="icon-bar"></span>
-      			</button>
-      			<a href="/" class="navbar-brand">Sudz</a>
-    		</div>
-    		<nav class="collapse navbar-collapse bs-navbar-collapse">
-      			<ul class="nav navbar-nav">
+<div class="navbar navbar-inverse navbar-static-top" >
+	<div class="container">
+		<a href="/" class="navbar-brand">SUDZ</a>
+		<div class="collapse navbar-collapse navHeaderCollapse">
+			<ul class="nav navbar-nav">
         			<li>
           				<a href="/contact/">Contact</a>
         			</li>
@@ -29,25 +22,42 @@
         				<a href="/search">Brewery Search</a>
         			</li>
       			</ul>
-      			<ul class="nav navbar-nav navbar-right">
-        			<li><a href="/login" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Sign In</a></li>
-      			</ul>
-    		</nav>
-  		</div>
-	</header>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/">Home</a></li>
+				<li><a href="/login">Sign In</a></li>
+				<li class="active"><a href="/signup">Sign Up</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-6">
+			<div class="col-xs-3"></div>
+			<div class="col-xs-6 titles">
 				<h1>Sign Up for an Account</h1>
 			</div>
+			<div class="col-xs-3"></div>
 		</div>
+	</br>
 		<div class="row">
-			<div class="col-xs-6">
+			<div class="col-xs-3"></div>
+			<div class="col-xs-3 inputs">
 				<form method="POST" action="/signup">
 					<input type="text" name="newUsername" placeholder="Username"></br>
 					<input type="email" name="newEmail" placeholder="Email Address"></br>
 					<input type="password" name="newPassword" placeholder="Password"></br>
-					<button type="submit">Create Account</button>
+				</br>
+			</div>
+			<div class="col-xs-3 inputs">
+					<input type="text" name="newFirstName" placeholder="First Name"></br>
+					<input type="text" name="newLastName" placeholder="Last Name"></br>
+					<input type="text" name="newAge" placeholder="Age">
+			</div>
+			<div class="col-xs-3"></div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-4">
+				<button type="submit" class="btn btn-primary btn-block">Sign Up</button>
 				</form>
 			</div>
 		</div>

@@ -3,76 +3,81 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
 	<title>Brewery Search</title>
 </head>
 <body>
-	<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
-  		<div class="container">
-    		<div class="navbar-header">
-      			<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-        			<span class="sr-only">Toggle navigation</span>
-        			<span class="icon-bar"></span>
-        			<span class="icon-bar"></span>
-        			<span class="icon-bar"></span>
-      			</button>
-      			<a href="/" class="navbar-brand">Sudz</a>
-    		</div>
-    		<nav class="collapse navbar-collapse bs-navbar-collapse">
-      			<ul class="nav navbar-nav">
+<div class="navbar navbar-inverse navbar-static-top" >
+	<div class="container">
+		<a href="/" class="navbar-brand">SUDZ</a>
+		<div class="collapse navbar-collapse navHeaderCollapse">
+			<ul class="nav navbar-nav">
         			<li>
           				<a href="/contact/">Contact</a>
         			</li>
         			<li>
           				<a href="/about">About</a>
         			</li>
-        			<li>
+        			<li class="active">
         				<a href="/search">Brewery Search</a>
         			</li>
       			</ul>
-      			<ul class="nav navbar-nav navbar-right">
-        			<li><a href="/profile" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">My Profile</a></li>
-        			<li><a href="/favorites" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">My Favorites</a></li>
-      			</ul>
-    		</nav>
-  		</div>
-	</header>
-	<div class="container">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/">Home</a></li>
+				<% if (userId) { %>
+				<li><a href="/profile">Profile</a></li>
+				<li><a href="/favorites">Favorites</a></li>
+				<% } else { %>
+				<li><a href="/login">Sign In</a></li>
+				<li><a href="/signup">Sign Up</a></li>
+				<% } %>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="jumbotron">
 		<div class="row">
 			<div class="col-xs-12">
 				<h1>Brewery Search<small> Search for Brewery by Name</small></h1>
 			</div>
 		</div>
-		<divclass ="row">
+		<div class ="row">
 			<div class="col-xs-9">
 				<form method="GET" action="/search">
- 					<input type="text" name="name" placeholder="Find by name">
- 					<button type="submit">Search</button>
+ 					<input type="text" name="name" placeholder="Search for...">
+        			<button class="btn btn-primary btn-sm" type="submit">Go!</button>
 				</form>
-				<h1>Search Results:</h1>
 			</div>
-			<div class="col-xs-3">
-				<ul>
-					<li><a href="/profile">Profile</a></li>
-					<li><a href="/favorites">Favorites</a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-6 col-xs-offset-1">
-				<table class="table-list">
-					<tbody><% breweries.forEach(function(brewery) { %>
-						<tr>
-							<td width="72" align="center" padding="20"><% if (brewery.images) { %><img width="64" height="64" src="<%= brewery.images.icon %>" class="img-thumbnail"><% } %>
-							</td>
-							<td position="center">
-								<h4><a href="/breweries/<%= brewery.id %> "><%= brewery.name %></h4></br>
-							</br>
-							</td>
-						</tr>
-						<% }) %> 
-					</tbody>
-				</table>
-			</div>		
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-xs-offset-1">
+			<% if (results) { %>
+			<h1>Search Results:</h1>
+			<% } %>
+		</br>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6 col-xs-offset-1">
+			<% if (noBreweries) { %>
+			<p>No results found</p>
+			<% } %>
+			<table class="table-list">
+				<tbody><% breweries.forEach(function(brewery) { %>
+					<tr>
+						<td width="72" align="center" padding="20"><% if (brewery.images) { %><img width="64" height="64" src="<%= brewery.images.icon %>" class="img-thumbnail"><% } %>
+						</td>
+						<td position="center">
+							<h4><a href="/breweries/<%= brewery.id %> "><%= brewery.name %></h4></br>
+						</br>
+						</td>
+					</tr>
+					<% }) %> 
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
 </html>

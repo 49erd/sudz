@@ -3,22 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
 	<title>Login</title>
 </head>
 <body>
-	<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
-  		<div class="container">
-    		<div class="navbar-header">
-      			<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-        			<span class="sr-only">Toggle navigation</span>
-        			<span class="icon-bar"></span>
-        			<span class="icon-bar"></span>
-        			<span class="icon-bar"></span>
-      			</button>
-      			<a href="/" class="navbar-brand">Sudz</a>
-    		</div>
-    		<nav class="collapse navbar-collapse bs-navbar-collapse">
-      			<ul class="nav navbar-nav">
+<div class="navbar navbar-inverse navbar-static-top" >
+	<div class="container">
+		<a href="/" class="navbar-brand">SUDZ</a>
+		<div class="collapse navbar-collapse navHeaderCollapse">
+			<ul class="nav navbar-nav">
         			<li>
           				<a href="/contact/">Contact</a>
         			</li>
@@ -29,26 +22,34 @@
         				<a href="/search">Brewery Search</a>
         			</li>
       			</ul>
-      			<ul class="nav navbar-nav navbar-right">
-        			<li><a href="/signup" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Sign Up</a></li>
-      			</ul>
-    		</nav>
-  		</div>
-	</header>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/">Home</a></li>
+				<li class="active"><a href="/login">Sign In</a></li>
+				<li><a href="/signup">Sign Up</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-xs-3"></div>
+			<div class="col-xs-6 titles">
 				<h1>Login to Your Account</h1>
 			</div>
+			<div class="col-xs-3"></div>
 		</div>
+	</br>
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-xs-4"></div>
+			<div class="col-xs-4 inputs">
 				<form method="POST" action="/login">
 					<input type="text" name="newUsername" placeholder="Username"></br>
 					<input type="password" name="newPassword" placeholder="Password"></br>
-					<button type="submit">Login</button>
+				</br>
+					<button type="submit" class="btn btn-primary btn-block">Login</button>
 				</form>
 			</div>
+			<div class="col-xs-4"></div>
 		</div>
 	</div>
 </body>
