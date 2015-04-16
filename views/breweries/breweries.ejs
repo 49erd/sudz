@@ -24,10 +24,12 @@
       			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="/">Home</a></li>
-				<% if (userId) { %>
+<!-- 				if there is a current user, show these menu items
+ -->				<% if (userId) { %>
 				<li><a href="/profile">Profile</a></li>
 				<li><a href="/favorites">Favorites</a></li>
-				<% } else { %>
+<!-- 				if there is no current user, show these menu items
+ -->				<% } else { %>
 				<li><a href="/login">Sign In</a></li>
 				<li><a href="/signup">Sign Up</a></li>
 				<% } %>
@@ -40,7 +42,8 @@
 			<div class="row titles">
 				<div class="col-xs-12">
 					<h1><%= brewery.name %></h1></br>
-					<% if (brewery.images) { %><img src="<%= brewery.images.large %>"/><% } %>
+<!-- 					if there are images, display them
+ -->					<% if (brewery.images) { %><img src="<%= brewery.images.large %>"/><% } %>
 				</div>
 				</br>
 			</div>
@@ -51,14 +54,16 @@
 				<h4><a href="<%= brewery.website %>" target="_blank"><%= brewery.website %></a></h4>
 			</div>
 			<div class="col-xs-6">
-				<% if (noDescription) { %>
+<!-- 				if no description exists, tell the user so
+ -->				<% if (noDescription) { %>
 				<p>No description found</p>
 				<% } else { %>
 				<%= brewery.description %>
 				<% } %>
 			</div>
 			<div class="col-xs-3 titles">
-				<form method="POST" action="/favorites">
+<!-- 				allow the user to add the brewery to their favorites
+ -->				<form method="POST" action="/favorites">
 					<input type="hidden" name="brewery[breweryId]" value="<%= brewId %>">
 					<input type="hidden" name="brewery[name]" value="<%= brewery.name  %>">
 					<button type="submit" class="btn btn-info">Add to Favorites</button>

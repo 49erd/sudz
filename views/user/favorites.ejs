@@ -31,9 +31,11 @@
 	</div>
 </div>
 	<div class="container">
-		<div class="row">
-			<div class="col-xs-6">
-				<h1>My Favorite Breweries:</h1>
+		<div class="jumbotron">
+			<div class="row">
+				<div class="col-xs-8">
+					<h1>My Favorite Breweries:</h1>
+				</div>
 			</div>
 		</div>
 		<div class="row">
@@ -41,8 +43,9 @@
 				<% favorites.forEach(function(brewery) { %>
 				<ul>
 					<li><h4><a href="/breweries/<%= brewery.breweryId %>"><%= brewery.name %></a></h4>
-					<form method="POST" action="/favorites/<%= brewery.breweryId %>?_method=DELETE">
-						<button type="submit" class="btn btn-info"> Delete from Favorites</button>
+<!-- 						add delete button to take brewery out of favorites
+ -->					<form method="POST" action="/favorites/<%= brewery.breweryId %>?_method=DELETE">
+						<button type="submit" class="btn btn-info">Delete from Favorites</button>
 					</form>
 					</li>
 				</br>

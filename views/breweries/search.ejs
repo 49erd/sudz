@@ -24,10 +24,12 @@
       			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="/">Home</a></li>
-				<% if (userId) { %>
+<!-- 				if there is a logged in user, show these menu items
+ -->				<% if (userId) { %>
 				<li><a href="/profile">Profile</a></li>
 				<li><a href="/favorites">Favorites</a></li>
-				<% } else { %>
+<!-- 				if no logged in user, show these menu items
+ -->				<% } else { %>
 				<li><a href="/login">Sign In</a></li>
 				<li><a href="/signup">Sign Up</a></li>
 				<% } %>
@@ -39,7 +41,7 @@
 	<div class="jumbotron">
 		<div class="row">
 			<div class="col-xs-12">
-				<h1>Brewery Search<small> Search for Brewery by Name</small></h1>
+				<h1>Brewery Search <small>Search for Brewery by Name</small></h1>
 			</div>
 		</div>
 		<div class ="row">
@@ -53,7 +55,8 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-offset-1">
-			<% if (results) { %>
+<!-- 			if there are actual search results, show them
+ -->			<% if (results) { %>
 			<h1>Search Results:</h1>
 			<% } %>
 		</br>
@@ -61,13 +64,15 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-6 col-xs-offset-1">
-			<% if (noBreweries) { %>
+<!-- 			if no results are found, say so
+ -->			<% if (noBreweries) { %>
 			<p>No results found</p>
 			<% } %>
 			<table class="table-list">
 				<tbody><% breweries.forEach(function(brewery) { %>
 					<tr>
-						<td width="72" align="center" padding="20"><% if (brewery.images) { %><img width="64" height="64" src="<%= brewery.images.icon %>" class="img-thumbnail"><% } %>
+<!-- 						show the thumbnail images of the breweries if there are any, otherwise, don't show anything
+ -->						<td width="72" align="center" padding="20"><% if (brewery.images) { %><img width="64" height="64" src="<%= 						brewery.images.icon %>" class="img-thumbnail"><% } %>
 						</td>
 						<td position="center">
 							<h4><a href="/breweries/<%= brewery.id %> "><%= brewery.name %></h4></br>

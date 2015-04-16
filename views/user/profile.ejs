@@ -31,26 +31,28 @@
 	</div>
 </div>
 	<div class="container">
+		<div class="jumbotron">
 		<div class="row">
 			<div class="col-xs-12">
-				<h1>Welcome, <%= user.username %>!</h1>
+				<h1>Welcome, <%= user.username %>!</br>
+					<small>Get started with the options below:</small></h1>
+				</br>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xs-6">
-				<h4><a href="/search">Search for Breweries</a></h4>
+			<div class="col-xs-3">
+				<a href="/search" class="btn btn-info" role="button">Search for Breweries</a>
 			</div>
-			<div class="col-xs-6">
-				<h4><a href="/favorites">View my favorite breweries</a></h4>
+			<div class="col-xs-3">
+				<a href="/favorites" class="btn btn-info" role="button">View Your Favorites</a>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-4">
+			<div class="col-xs-3">
 				<form method="POST" action="/profile">
-					<button type="submit" class="btn btn-danger">Logout</button>
+					<a href="/favorites" class="btn btn-danger" role="button" type="submit">Logout</a>
 				</form>
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>
