@@ -90,7 +90,7 @@ app.get('/contact', function(req,res) {
 
 // render the signup page
 app.get('/signup', function(req,res) {
-	res.render('user/signup');
+	res.render('user/signup', {noUsername: false, noEmail: false, noPass: false});
 });
 
 // submit info to sign up
@@ -102,18 +102,26 @@ app.post('/signup', function(req,res) {
 	var firstName = req.body.newFirstName;
 	var lastName = req.body.newLastName;
 	var age = req.body.newAge;
+	if (!username) {
+		res.render('user/signup', {noUsername: true, noEmail: false, noPass: false})
+	} else if (!email) {
+		res.render('user/signup', {noUsername: false, noEmail: true, noPass: false})
+	} else if (!password) {
+		res.render('user/signup', {noUsername: false, noEmail: false, noPass: true})
+	} else {
 	// create a user by first putting parameters into the createSecure function (encrypts password)
-	db.User.createSecure(username,email,password).then(function(user) {
-		// log in the newly created user
-		req.login(user);
-		// go to the new user's profile
-		res.redirect('/profile');
-	});
+		db.User.createSecure(username,email,password).then(function(user) {
+			// log in the newly created user
+			req.login(user);
+			// go to the new user's profile
+			res.redirect('/profile');
+		});
+	}
 });
 
 // render the login page
 app.get('/login', function(req,res) {
-	res.render('user/login');
+	res.render('user/login', {noPass: false});
 });
 
 // submit info to User database
@@ -122,10 +130,14 @@ app.post('/login', function(req,res) {
 	var password = req.body.newPassword;
 	//authenticate the information provided to match it with the info in the User database
 	db.User.authenticate(username, password).then(function(user) {
-		// log in the user
-		req.login(user);
-		// redirect to the user's profile page
-		res.redirect('/profile');
+		if (user) {
+			// log in the user
+			req.login(user);
+			// redirect to the user's profile page
+			res.redirect('/profile');
+		} else {
+			res.render('user/login', {noPass: true});
+		}
 	});
 });
 
