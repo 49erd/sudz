@@ -160,6 +160,8 @@ app.get('/search', function(req,res) {
 				} else {
 					res.render('breweries/search', {breweries: [], noBreweries: true, userId: req.session.userId, results: true});
 				}
+			} else {
+				res.send('Something is not working with the AP!');
 			}
 		});
 	}
