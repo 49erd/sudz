@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
 	<title>Favorite Breweries</title>
 </head>
-<body>
+<body id="favoriteStuff">
 <div class="navbar navbar-inverse navbar-static-top" >
 	<div class="container">
 		<a href="/" class="navbar-brand">SUDZ</a>
@@ -31,26 +31,28 @@
 	</div>
 </div>
 	<div class="container">
-		<div class="jumbotron">
+		<div class="jumbotron homeStuff">
 			<div class="row">
 				<div class="col-xs-8">
 					<h1>My Favorite Breweries</h1>
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-xs-6">
-				<% favorites.forEach(function(brewery) { %>
-				<ul>
-					<li><h4><a href="/breweries/<%= brewery.breweryId %>"><%= brewery.name %></a></h4>
-<!-- 						add delete button to take brewery out of favorites
- -->					<form method="POST" action="/favorites/<%= brewery.breweryId %>?_method=DELETE">
-						<button type="submit" class="btn btn-info">Delete from Favorites</button>
-					</form>
-					</li>
-				</br>
-				</ul>
-				<% }) %>
+		<div class="jumbotron homeStuff">
+			<div class="row">
+				<div class="col-xs-6">
+					<% favorites.forEach(function(brewery) { %>
+					<ul>
+						<li><h4><a href="/breweries/<%= brewery.breweryId %>"><%= brewery.name %></a></h4>
+<!-- 							add delete button to take brewery out of favorites
+ -->						<form method="POST" action="/favorites/<%= brewery.breweryId %>?_method=DELETE">
+							<button type="submit" class="btn btn-info">Delete from Favorites</button>
+						</form>
+						</li>
+					</br>
+					</ul>
+					<% }) %>
+				</div>
 			</div>
 		</div>
 	</div>

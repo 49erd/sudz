@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
 	<title>Brewery Search</title>
 </head>
-<body>
+<body id="searchStuff">
 <div class="navbar navbar-inverse navbar-static-top" >
 	<div class="container">
 		<a href="/" class="navbar-brand">SUDZ</a>
@@ -38,7 +38,7 @@
 	</div>
 </div>
 <div class="container">
-	<div class="jumbotron">
+	<div class="jumbotron homeStuff">
 		<div class="row">
 			<div class="col-xs-12">
 				<h1>Brewery Search <small>Search for Brewery by Name</small></h1>
@@ -53,15 +53,18 @@
 			</div>
 		</div>
 	</div>
+	<% if (results) { %>
+	<div class="jumbotron homeStuff">
 	<div class="row">
 		<div class="col-xs-offset-1">
 <!-- 			if there are actual search results, show them
- -->			<% if (results) { %>
+ -->			
 			<h1>Search Results:</h1>
-			<% } %>
+			
 		</br>
 		</div>
 	</div>
+	<% } %>
 	<div class="row">
 		<div class="col-xs-6 col-xs-offset-1">
 <!-- 			if no results are found, say so
@@ -83,6 +86,7 @@
 				</tbody>
 			</table>
 		</div>
+	</div>
 	</div>
 </div>
 </html>

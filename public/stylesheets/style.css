@@ -30,3 +30,32 @@ body {
 .singleinput {
 	padding: 5px;
 }
+
+.homeStuff {
+	background-color: rgba(240, 240, 240, .9)
+}
+
+#profileStuff {
+	background: url("http://whatsonmygrill.com/wp-content/uploads/2014/01/Airstream-Beer-Taps-II.jpg") no-repeat center center fixed;
+	background-size: cover;
+}
+
+#favoriteStuff {
+	background: url("http://3.bp.blogspot.com/-frYcwhRcvXU/UZEBVl9kctI/AAAAAAAACVg/uqRWQKtOVPk/s1600/Orlando+Brewing+Tour+Brewery+Organic+Beer.jpg") no-repeat center center fixed;
+	background-size: cover;
+}
+
+#searchStuff {
+	background: url("http://d.fastcompany.net/multisite_files/fastcompany/poster/2013/04/3008798-poster-1920-beer-lesson-selling-products-and-buying-habits.jpg") no-repeat center center fixed;
+	background-size: cover;
+}
+
+#aboutStuff {
+	background: url("https://neonanomaly.files.wordpress.com/2014/03/we-want-beer.jpg") no-repeat center center fixed;
+	background-size: cover;
+}
+
+#contactStuff {
+	background: url("http://static1.squarespace.com/static/5491beece4b0a2495563a0f7/5491c112e4b05fe2605df1fc/5491d95de4b07d322323ceb3/1418844510051/bikes-beers-brother08.jpg?format=1500w") no-repeat center center fixed;
+	background-size: cover;
+}
