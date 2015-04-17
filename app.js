@@ -272,7 +272,11 @@ app.get('/favorites', function(req,res) {
 		// find all the favorites associated with the current user's Id
 		db.Favorite.findAll({where: {UserId: req.session.userId}})
 		.then(function(favorites) {
-			res.render('user/favorites', {favorites: favorites});
+			if (favorites.length > 0) {
+				res.render('user/favorites', {favorites: favorites, noFavs: false});
+			} else {
+				res.render('user/favorites', {favorites:favorites, noFavs: true})
+			}
 		});
 		// if there's no logged in user, go to the login page
 	} else {
